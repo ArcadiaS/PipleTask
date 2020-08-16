@@ -11,6 +11,11 @@ class DatabaseSeeder extends Seeder
      */
     public function run()
     {
+        \Illuminate\Database\Eloquent\Model::unguard();
+    
         // $this->call(UserSeeder::class);
+        $this->call(RoleTableSeeder::class);
+    
+        \Illuminate\Database\Eloquent\Model::reguard();
     }
 }

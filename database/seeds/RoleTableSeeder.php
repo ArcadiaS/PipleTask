@@ -11,6 +11,9 @@ class RoleTableSeeder extends Seeder
      */
     public function run()
     {
+        foreach (\App\Models\Role::all() as $role){
+            $role->delete();
+        }
         $dev_role = new \App\Models\Role();
         $dev_role->slug = 'Expert';
         $dev_role->name = 'expert';
