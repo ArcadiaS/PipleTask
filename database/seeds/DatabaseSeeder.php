@@ -14,7 +14,7 @@ class DatabaseSeeder extends Seeder
         \Illuminate\Database\Eloquent\Model::unguard();
     
         $this->call(RoleTableSeeder::class);
-        $this->call(TypeTableSeeder::class);
+        $this->call(UserTableSeeder::class);
     
         \Illuminate\Database\Eloquent\Model::reguard();
     }
