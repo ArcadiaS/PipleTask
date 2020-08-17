@@ -33,3 +33,9 @@ $factory->define(\App\Models\Role::class, function (Faker $faker) {
         'slug' => $faker->slug,
     ];
 });
+
+$factory->define(\App\Models\Type::class, function (Faker $faker) {
+    return [
+        'name' => $faker->titleMale. " ". $faker->firstNameMale
+    ];
+});
