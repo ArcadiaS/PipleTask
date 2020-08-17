@@ -11,19 +11,27 @@ use Illuminate\Http\Request;
 class SearchController extends Controller
 {
     /**
-     * Display a listing of the resource.
+     * Display a listing of the Users Resource.
+     *
+     * @group Search Management
+     * @authenticated
+     *
+     * @apiResourceCollection  \App\Http\Resources\ProfileResource
+     * @apiResourceModel  \App\Models\Profile
+     * @param Request $request
      *
      * @return \Illuminate\Http\Response
      */
     public function index(Request $request)
     {
+        
         $query = [
-                    'match' => [
-                        'title' => 'consequatur'
-                    ]
+            'match' => [
+                'title' => $request->search
+            ]
         ];
-        $profiles = Profile::searchByQuery(array('match' => array('title' => 'consequatur')));
-
+        $profiles = Profile::searchByQuery($query);
+        
         return response()->json(ProfileResource::collection($profiles));
         
     }

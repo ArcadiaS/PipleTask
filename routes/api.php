@@ -9,3 +9,7 @@ Route::middleware('auth:api')->get('/user', function (Request $request) {
 
 
 Route::middleware('auth:api')->get('/search', 'Api\v1\SearchController@index');
+
+Route::middleware('auth:api')->get('/types', 'Api\v1\TypeController@index');
+
+Route::post('register','Api\v1\UsersController@store');
