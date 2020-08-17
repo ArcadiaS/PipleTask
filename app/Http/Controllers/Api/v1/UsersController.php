@@ -23,7 +23,7 @@ class UsersController extends Controller
      *
      * @return \Illuminate\Http\Response
      */
-    function store(RegisterRequest $request)
+    function store(Request $request)
     {
         $user = User::create([
             'name' => $request->name,

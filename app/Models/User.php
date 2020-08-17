@@ -27,18 +27,23 @@ class User extends Authenticatable
      * @var array
      */
     protected $fillable = [
-        'name', 'email', 'password', 'type_id', 'is_expert'
+        'name',
+        'email',
+        'password',
+        'type_id',
+        'is_expert'
     ];
-
+    
     /**
      * The attributes that should be hidden for arrays.
      *
      * @var array
      */
     protected $hidden = [
-        'password', 'remember_token',
+        'password',
+        'remember_token',
     ];
-
+    
     /**
      * The attributes that should be cast to native types.
      *
@@ -48,7 +53,8 @@ class User extends Authenticatable
         'email_verified_at' => 'datetime',
     ];
     
-    public function hasRole( ... $roles ) {
+    public function hasRole(... $roles)
+    {
         
         foreach ($roles as $role) {
             if ($this->roles->contains('slug', $role)) {
@@ -58,7 +64,8 @@ class User extends Authenticatable
         return false;
     }
     
-    public function roles() {
+    public function roles()
+    {
         
         return $this->belongsToMany(Role::class);
         

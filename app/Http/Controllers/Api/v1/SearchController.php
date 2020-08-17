@@ -18,13 +18,15 @@ class SearchController extends Controller
      *
      * @apiResourceCollection  \App\Http\Resources\ProfileResource
      * @apiResourceModel  \App\Models\Profile
-     * @param Request $request
+     * @bodyParam Request $request
      *
      * @return \Illuminate\Http\Response
      */
     public function index(Request $request)
     {
-        
+        if (!auth()->user()->hasRole('user')){
+            return response()->json('Unauthorized.', 403);
+        }
         $query = [
             'match' => [
                 'title' => $request->search
